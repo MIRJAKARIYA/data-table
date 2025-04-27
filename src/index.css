@@ -1,0 +1,111 @@
+@import "tailwindcss";
+
+/* Custom styles for the table to match the image */
+.custom-table {
+    width: 100% !important;
+    margin: 0 !important;
+  }
+  
+  .custom-table .ant-table {
+    background-color: #f9fafb !important;
+  }
+  
+  .custom-table .ant-table-thead > tr > th {
+    background-color: #f7f7f7 !important;
+    color: #6b7280 !important;
+    font-weight: 600 !important;
+    font-size: 14px !important;
+    border-bottom: 1px solid #e5e7eb !important;
+    padding: 12px 16px !important;
+    text-align: center !important;
+  }
+  
+  /* Right-align specific headers */
+  .custom-table .ant-table-thead > tr > th:nth-child(6),
+  .custom-table .ant-table-thead > tr > th:nth-child(7),
+  .custom-table .ant-table-thead > tr > th:nth-child(8) {
+    text-align: right !important;
+  }
+  
+  .custom-table .ant-table-tbody > tr > td {
+    border-bottom: 1px solid #e5e7eb !important;
+    padding: 12px 16px !important;
+    font-size: 14px !important;
+    text-align: center !important;
+  }
+  
+  /* Right-align specific columns */
+  .custom-table .ant-table-tbody > tr > td:nth-child(6),
+  .custom-table .ant-table-tbody > tr > td:nth-child(7),
+  .custom-table .ant-table-tbody > tr > td:nth-child(8) {
+    text-align: right !important;
+  }
+  
+  .custom-table .ant-table-tbody > tr.ant-table-row:hover > td {
+    background-color: #f3f4f6 !important;
+  }
+  
+  .custom-table .ant-table-tbody > tr.bg-gray-200 > td {
+    background-color: #e5e7eb !important;
+    padding: 8px 16px !important;
+    text-align: left !important;
+  }
+  
+  .custom-table .ant-table-tbody > tr.bg-gray-200:hover > td {
+    background-color: #e5e7eb !important;
+  }
+  
+  /* Adjust spacing for the Total Time Worked row */
+  .custom-table .ant-table-tbody > tr.bg-gray-200 .flex.space-x-4 > span {
+    min-width: 80px;
+  }
+  
+  /* Pagination styling */
+  .pagination-custom {
+    margin-top: 16px !important;
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+  }
+  
+  .pagination-custom .ant-pagination-total-text {
+    color: #6b7280 !important;
+    font-size: 14px !important;
+  }
+  
+  .pagination-custom .ant-pagination-item {
+    border: none !important;
+    font-size: 14px !important;
+    margin: 0 4px !important;
+  }
+  
+  .pagination-custom .ant-pagination-item-active {
+    background-color: #2563eb !important;
+    color: white !important;
+    border-radius: 4px !important;
+  }
+  
+  .pagination-custom .ant-select-selector {
+    border: 1px solid #d1d5db !important;
+    border-radius: 4px !important;
+    font-size: 14px !important;
+    height: 32px !important;
+    display: flex !important;
+    align-items: center !important;
+  }
+  
+  .pagination-custom .ant-select-selection-item {
+    line-height: 32px !important;
+  }
+  
+  .custom-table .ant-table-container {
+    border: 1px solid #e5e7eb !important;
+    border-radius: 8px !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05) !important;
+    width: 100% !important;
+  }
+  
+  .custom-table .ant-table-content {
+    overflow-x: auto !important;
+    width: 100% !important;
+  }

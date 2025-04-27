@@ -1,0 +1,52 @@
+[
+    {
+      "employeeName": "Super Admin",
+      "date": "04-23-2025",
+      "propertyName": "Zzz9-pizzaburg",
+      "checkIn": "1:29 AM",
+      "checkOut": "1:31 AM",
+      "timeWorked": "2 min",
+      "noOfUnits": 10,
+      "avgSecPerUnit": 13.89
+    },
+    {
+      "employeeName": "Super Admin",
+      "date": "04-23-2025",
+      "propertyName": "Zzz9-999-Herfy",
+      "checkIn": "6:15 AM",
+      "checkOut": "Invalid Date",
+      "timeWorked": "0 min",
+      "noOfUnits": 10,
+      "avgSecPerUnit": 0.00
+    },
+    {
+      "employeeName": "Super Admin",
+      "date": "04-22-2025",
+      "propertyName": "Zz-4",
+      "checkIn": "4:57 PM",
+      "checkOut": "4:59 PM",
+      "timeWorked": "2 min",
+      "noOfUnits": 10,
+      "avgSecPerUnit": 10.52
+    },
+    {
+      "employeeName": "Tester Amy",
+      "date": "04-23-2025",
+      "propertyName": "Zz-1",
+      "checkIn": "12:46 PM",
+      "checkOut": "12:48 PM",
+      "timeWorked": "2 min",
+      "noOfUnits": 10,
+      "avgSecPerUnit": 9.67
+    },
+    {
+      "employeeName": "Tester Mahbub",
+      "date": "03-23-2025",
+      "propertyName": "Zz-2",
+      "checkIn": "12:49 PM",
+      "checkOut": "12:50 PM",
+      "timeWorked": "2 min",
+      "noOfUnits": 10,
+      "avgSecPerUnit": 1.81
+    }
+  ]
