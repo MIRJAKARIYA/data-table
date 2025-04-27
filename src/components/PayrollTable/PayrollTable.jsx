@@ -361,7 +361,7 @@ const PayrollTable = () => {
             setCurrentPage(page);
             setPageSize(pageSize);
           },
-          showTotal: (total) => `Total ${total}`,
+          showTotal: (total) => `Total ${total} employees`,
         }}
         scroll={{ y: 400 }}
         rowClassName={(record, index) =>
