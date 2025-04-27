@@ -6,15 +6,15 @@ import {
   DownOutlined,
   ClearOutlined,
 } from "@ant-design/icons";
-import moment from "moment";
 import Papa from "papaparse";
 import { generateDummyData } from "../../utils/dataGenerator";
-// const dummyData = generateDummyData(100);
+import { formatDate } from "../../utils/dateConverter";
+import { isDateInRange } from "../../utils/dateRangeCheck";
+const dummyData = generateDummyData(100);
 
 const { RangePicker } = DatePicker;
 
 const PayrollTable = () => {
-  const dummyData = generateDummyData(100);
   const [searchText, setSearchText] = useState("");
   const [singleDate, setSingleDate] = useState(null);
   const [dateRange, setDateRange] = useState([null, null]);
@@ -22,7 +22,6 @@ const PayrollTable = () => {
   const [pageSize, setPageSize] = useState(10);
   const [showMostHoursModal, setShowMostHoursModal] = useState(false);
   const [showMostEfficientModal, setShowMostEfficientModal] = useState(false);
-
 
   const clearFilters = () => {
     setSearchText("");
@@ -41,23 +40,19 @@ const PayrollTable = () => {
       );
     }
 
-    if (dateRange[0] && dateRange[1]) {
-      const start = moment(dateRange[0]).startOf("day");
-      const end = moment(dateRange[1]).endOf("day");
-      console.log(start,end)
-      data = data.filter((item) => {
-        const itemDate = moment(item.date, "MM-DD-YYYY");
-        return itemDate.isBetween(start, end, null, "[]");
-      });
+    if (dateRange?.[0] && dateRange?.[1]) {
+      const start = formatDate(dateRange?.[0]?.["$d"]);
+
+      const end = formatDate(dateRange?.[1]?.["$d"]);
+      data = data.filter((item) => isDateInRange(item?.date, start, end));
+      return data;
     } else if (singleDate) {
-      const selectedDate = moment(singleDate).format("MM-DD-YYYY");
-      // console.log(selectedDate)
-      data = data.filter((item) => item.date === selectedDate);
-      console.log(data)
+      const dates = formatDate(singleDate?.["$d"]);
+      data = data.filter((item) => item.date.includes(dates));
     }
 
     return data;
-  }, [searchText, singleDate, dateRange,dummyData]);
+  }, [searchText, singleDate, dateRange]);
 
   const groupedData = useMemo(() => {
     const sortedData = [...filteredData].sort((a, b) =>
@@ -130,7 +125,10 @@ const PayrollTable = () => {
       acc[item.employeeName] = (acc[item.employeeName] || 0) + time;
       return acc;
     }, {});
-    return Object.entries(employeeHours).reduce((a, b) => (a[1] > b[1] ? a : b), ["", 0]);
+    return Object.entries(employeeHours).reduce(
+      (a, b) => (a[1] > b[1] ? a : b),
+      ["", 0]
+    );
   }, [filteredData]);
 
   // Calculate who is the most efficient
@@ -145,11 +143,13 @@ const PayrollTable = () => {
       }
       return acc;
     }, {});
-    const totalEfficiency = Object.entries(employeeEfficiency).map(([name, { total, count }]) => [
-      name,
-      total / count,
-    ]);
-    return totalEfficiency.reduce((a, b) => (a[1] < b[1] ? a : b), ["", Infinity]);
+    const totalEfficiency = Object.entries(employeeEfficiency).map(
+      ([name, { total, count }]) => [name, total / count]
+    );
+    return totalEfficiency.reduce(
+      (a, b) => (a[1] < b[1] ? a : b),
+      ["", Infinity]
+    );
   }, [filteredData]);
 
   // Define table columns
@@ -391,8 +391,12 @@ const PayrollTable = () => {
         footer={null}
       >
         <p>
-          The most efficient employee is: <strong>{mostEfficientEmployee[0]}</strong> with an average of{" "}
-          <strong>{mostEfficientEmployee[1].toFixed(2)} seconds per unit</strong>.
+          The most efficient employee is:{" "}
+          <strong>{mostEfficientEmployee[0]}</strong> with an average of{" "}
+          <strong>
+            {mostEfficientEmployee[1].toFixed(2)} seconds per unit
+          </strong>
+          .
         </p>
       </Modal>
     </div>

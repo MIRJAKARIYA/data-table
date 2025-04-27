@@ -52,8 +52,7 @@ export const generateDummyData = (count) => {
     // format for output
     const checkOutStr = checkOut.format('h:mm A');
     const workedMins = Math.floor(workedSecs / 60);
-    const workedRemSecs = workedSecs % 60;
-    const timeWorkedLabel = `${workedMins} min ${workedRemSecs} sec`;
+    const timeWorkedLabel = `${workedMins} min`;
 
     const noOfUnits = randInt(1, 50);
     const avgSecPerUnit = (workedSecs / noOfUnits).toFixed(2);
